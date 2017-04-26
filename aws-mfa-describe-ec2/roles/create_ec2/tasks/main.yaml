@@ -1,0 +1,18 @@
+---
+- name: create EC2 instance
+  shell: echo hola
+  register: output
+- debug:
+    msg: "{{session_credentials}}"
+- name: Create ec2
+  ec2_remote_facts:
+    aws_access_key: "{{session_credentials.sts_creds.access_key}}"
+    aws_secret_key: "{{session_credentials.sts_creds.secret_key}}"
+    security_token: "{{session_credentials.sts_creds.session_token}}"
+    region: us-west-2
+  register: result_aws
+- debug:
+    msg: "{{result_aws}}"
+
+
+# ami-4836a428

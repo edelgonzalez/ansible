@@ -1,0 +1,17 @@
+---
+- name: this is a hello world example
+  hosts: local
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Get current time
+      shell: date +%s
+      register: variable_maniakona
+    - name: print time epoch
+      shell: echo {{ variable_maniakona }}
+    - debug:
+        msg: "stout lines {{ variable_maniakona.stdout_lines }}"
+    - debug:
+        msg: "stout {{ variable_maniakona.stdout}}"
+    - debug:
+        msg: "variable group: {{var.var1}}"

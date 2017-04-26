@@ -1,0 +1,11 @@
+# run: ansible-playbook -i hosts --extra-vars "@~/aws_cred" --extra-vars mfa_token=840416  test-playbook.yaml
+
+
+---
+- name: test Playbook
+  hosts: local
+  connection: local
+  gather_facts: false
+  roles:
+    - assume_role
+    - create_ec2
