@@ -1,0 +1,18 @@
+---
+# - name: Get MFA Token from user
+#   pause:
+#     prompt: "Enter MFA token from your MFA device"
+#   register: mfa_token
+
+- debug:
+    msg: "{{aws_access_key}}"
+- name: Get new AWS session / token
+  sts_session_token:
+    duration_seconds: 3600
+    mfa_serial_number: "{{aws_mfa_device}}"
+    aws_access_key: "{{aws_access_key}}"
+    aws_secret_key: "{{aws_secret_key}}"
+    mfa_token: "{{mfa_token}}"
+  register: session_credentials
+- debug:
+    msg: "session_credentials var: {{ session_credentials }}"

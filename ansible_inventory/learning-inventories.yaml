@@ -1,0 +1,7 @@
+---
+- name: Test project to learn how to use inventories/groups/var EcosystemSecurityGroup EcosystemSecurityGroup
+  hosts: local
+  connection: local
+  gather_facts: false
+  roles:
+    -

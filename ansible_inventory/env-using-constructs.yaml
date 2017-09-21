@@ -1,0 +1,8 @@
+---
+- name: variable precedence teswt
+  hosts: all
+  vars_files:
+    - "vars/{{env}}.yaml"
+  tasks:
+    - debug:
+        msg: "aws_artifacts_s3_bucket={{aws_artifacts_s3_bucket}}, aws_artifacts_s3_url_prefix={{aws_artifacts_s3_url_prefix}}"

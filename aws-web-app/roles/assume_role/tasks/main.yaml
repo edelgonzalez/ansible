@@ -1,0 +1,9 @@
+---
+- name: Check for existence of ansible_aws file
+  stat:
+    path: ansible_aws
+  register: current_aws_cred_file
+- debug:
+    msg: "{{current_aws_cred_file}}"
+- name: Get new session with AWS
+  include: get_new_aws_session.yaml

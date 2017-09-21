@@ -1,0 +1,8 @@
+---
+- name: test Playbook
+  hosts: local
+  connection: local
+  gather_facts: false
+  roles:
+    - assume_role
+    - create_ec2

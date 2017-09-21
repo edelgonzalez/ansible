@@ -1,0 +1,3 @@
+---
+aws_artifacts_s3_bucket: icaws-artifacts-staging
+aws_artifacts_s3_url_prefix: icaws-customer-env/develop

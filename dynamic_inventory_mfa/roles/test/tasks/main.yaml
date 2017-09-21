@@ -1,0 +1,6 @@
+---
+- name: test
+  shell: date +%s
+  register: date_var
+- debug:
+    msg: "stout {{date_var}}"

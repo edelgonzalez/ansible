@@ -1,0 +1,28 @@
+---
+
+- name: create EC2 instnace
+  ec2:
+    key_name: test-stg-cust1-uswest2
+    aws_access_key: "{{session_credentials.sts_creds.access_key}}"
+    aws_secret_key: "{{session_credentials.sts_creds.secret_key}}"
+    security_token: "{{session_credentials.sts_creds.session_token}}"
+    region: us-west-2
+    instance_type: t2.micro
+    image: ami-4836a428
+    wait: yes
+    group: default
+    exact_count: 1
+    instance_tags:
+      Name: AnsibleExample
+      Owner: edgar.gonzalez
+    count_tag:
+      Name: AnsibleExample
+      Owner: edgar.gonzalez
+    vpc_subnet_id: subnet-863f23e2
+    assign_public_ip: yes
+  register: ec2_ansible_test
+- debug:
+    msg: ec2_ansible_test
+
+
+# ami-4836a428
